@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dog Breed Identifier</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <link href='https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css' rel='stylesheet' type='text/css'>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row" style="padding:50px;">
+            <p><h1>Breed Dog Identifier</h1></p>
+            <div>
+                <table id="breedTable" class="display dataTable" style="width:100%">
+                    <thead>
+                    <tr>
+                        <th>Breed</th>
+                        <th>Average Height in Inches</th>
+                        <th>Average Weight in lbs</th>
+                        <th>Average Lifespan in years</th>
+                        <th>Classification</th>
+                        <th>Obedience (%)</th>
+                        <th>Breed Group AKC</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+<script>
+    $(document).ready(function() {
+        var breedDataTable = $('#breedTable').DataTable({
+            'processing':true,
+            'serverSide': true,
+            'serverMethod': 'post',
+            'ajax': {
+                'url': '/ajaxfile'
+            },
+            'lengthMenu': [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+            searching: true,
+            sort: false,
+            "serverSide": true,
+            'columns': [
+                { data: 'breed' },
+                { data: 'avgheight' },
+                { data: 'avgweight' },
+                { data: 'avglifespan' },
+                { data: 'classification' },
+                { data: 'obedience' },
+                { data: 'bgroup' },
+            ]
+        });
+    } );
+</script>
+</body>
+</html>
+
+{#    <h1><center>Dog Breed Identifier</center></h1>#}
+{#        <form class="example" method="post" action=""#}
+{#         style="margin:auto;max-width:600px">#}
+{#            <input type="text" placeholder="Search by author or book, or all to see all the data" name="breed">#}
+{#            <button type="submit"><i class="fa fa-search"></i>#}
+{#            </button>#}
+{#        </form>#}
+{#        <p></p>#}
+{#        <center>#}
+{#        {% for item in data %}#}
+{#            <tr>#}
+{#                <td> {{item[0]}} by {{item[1]}}</td>#}
+{#                </br>#}
+{#            </tr>#}
+{#        {% endfor %}#}
+{#        </center>#}
+{#</div>#}
+{##}
+{##}
+{#</body>#}
+{#</html>#}
+
+{#<meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-#}
+{#        scale=1">#}
+{#        <link rel="stylesheet"#}
+{#        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">#}
+{#        <link rel="stylesheet" href="/static/index.css">#}
